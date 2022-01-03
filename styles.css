@@ -10,7 +10,42 @@ nav {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    width: 275px;
     background-color: #1F1F3D;
     border: 1px solid #1F1F3D;
 }
+
+.main-header {
+    color: white;
+    font-family: "Open Sans";
+    font-size: 20px;
+    padding: 20px;
+}
+
+.filter-ideas-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 15%;
+    padding: 15px;
+    border-top: solid 2px #353567;
+    border-bottom: solid 2px #353567;
+}
+
+.starred-btn {
+    height: 38%;
+    font-family: "Open Sans";
+    font-size: 20px;
+    color: white;
+    background-color: #5356A4;
+    border: none;
+}
+
+.filter-ideas {
+    color: #BFBFDD;
+    font-family: "Open Sans";
+    margin-left: 2px;
+}
+
+
 
