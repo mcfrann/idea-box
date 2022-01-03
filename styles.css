@@ -18,6 +18,7 @@ nav {
 .main-header {
     color: white;
     font-family: "Open Sans";
+    font-weight: 600;
     font-size: 20px;
     padding: 20px;
 }
@@ -36,6 +37,7 @@ nav {
     height: 38%;
     font-family: "Open Sans";
     font-size: 20px;
+    font-weight: 600;
     color: white;
     background-color: #5356A4;
     border: none;
@@ -45,6 +47,7 @@ nav {
     color: #BFBFDD;
     font-family: "Open Sans";
     margin-left: 2px;
+    margin-bottom: 20px;
 }
 
 
