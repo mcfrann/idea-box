@@ -5,15 +5,25 @@
         <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> -->
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">    </head>
     <body>
+        <nav>
+            <header class="main-header">IdeaBox</header>
+            <div class="filter-ideas-container">
+                <label class="filter-ideas">Filter Starred Ideas</label>
+                <button name="show-starred-btn" class="starred-btn" id="starred-btn">Show Starred Ideas</button>
+            </div>
+        </nav>
         <main>
-            <nav>
-                <header class="main-header">IdeaBox</header>
-                <div class="filter-ideas-container">
-                    <label class="filter-ideas">Filter Starred Ideas</label>
-                    <button name="show-starred-btn" class="starred-btn" id="starred-btn">Show Starred Ideas</button>
-                </div>
-
-            </nav>
+            <form class="main-page-form">
+                <label for="input-title" class="title-label form-element">Title</label>
+                <input type="text" class="main-input-title form-element"/>
+                <label for="input-body" class="body-label form-element">Body</label>
+                <input type="text" class="main-input-body form-element"/>
+                <button class="main-input-save form-element button">Save</button>
+                <span class="search-container">
+                  <img class="search-icon" src="assets/search.svg" alt="search ideas"/>
+                  <input type="text" class="search-box form-element" placeholder="Search Ideas"/>
+                </span>
+            </form>
         </main>
     </body>
 </html>
