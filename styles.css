@@ -57,5 +57,41 @@ main {
   flex-direction: column;
   border: 2px solid blue;
   width: 100%;
-  height: 50%;
+  height: 40vh;
+  align-items: center;
+  justify-content: center;
+  background-color: #A9AAD2;
+}
+
+label {
+  margin-bottom: 5px;
+  margin-top: 20px;
+  font-family: "Open Sans";
+  font-weight: bold;
+  color: #1F1F3D;
+}
+
+.main-page-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-input-title {
+  width: 200%;
+  height: 3vh;
+  justify-content: space-around;
+  border: 2px solid #1F1F3D;
+  border-radius: 4px;
+}
+
+.main-input-body {
+  width: 200%;
+  height: 10vh;
+  justify-content: space-around;
+  border: 2px solid #1F1F3D;
+  border-radius: 4px;
+}
+
+.main-input-save {
+  
 }
