@@ -75,12 +75,12 @@ label {
 .main-page-form {
   display: flex;
   flex-direction: column;
-  background-color: aliceblue;
+  background-color: #A9AAD2;
   align-items: center;
 }
 
 .main-input-title {
-  width: 50%;
+  width: 30%;
   height: 4vh;
   justify-content: space-around;
   border: 2px solid #5356A4;
@@ -88,7 +88,7 @@ label {
 }
 
 .main-input-body {
-  width: 50%;
+  width: 30%;
   height: 10vh;
   justify-content: space-around;
   border: 2px solid #5356A4;
@@ -100,7 +100,7 @@ label {
   background-color: #353567;
   font-family: "Open Sans";
   color: white;
-  width: 50%;
+  width: 30.5%;
   height: 4vh;
   margin-top: 20px;
   border: 2px solid #5356A4;
@@ -110,11 +110,13 @@ label {
 
 .search-container {
   display: flex;
-  width: 50%;
+  width: 30.5%;
   margin-top: 20px;
   height: 4vh;
   border: 2px solid #5356A4;
   border-radius: 3px;
+  margin-bottom: 30px;
+
   /* margin-top: 20px;
   border-radius: 3px;
   font-family: "Open Sans";
@@ -147,4 +149,11 @@ label {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   padding: 20px;
+}
+
+.idea-card {
+  height: 30vh;
+  width: 65%;
+  border: 2px solid blue;
+
 }
