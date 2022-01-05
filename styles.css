@@ -1,16 +1,11 @@
 body {
     display: flex;
-    /* width: 100%; */
     height: 100vh;
     margin: 0px;
     flex-direction: row;
 }
 
 nav {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* display: flex; */
-  /* flex-direction: column; */
   height: 100%;
   width: 20%;
   background-color: #1F1F3D;
@@ -55,8 +50,6 @@ nav {
 /*new idea form*/
 
 main {
-  /* display: flex; */
-  /* flex-direction: column; */
   width: 100%;
   height: 100%;
   align-items: center;
@@ -116,17 +109,9 @@ label {
   border: 2px solid #5356A4;
   border-radius: 3px;
   margin-bottom: 30px;
-
-  /* margin-top: 20px;
-  border-radius: 3px;
-  font-family: "Open Sans";
-  width: 245%;
-  height: 4vh;
-  font-size: 18px; */
 }
 
 .search-icon {
-  /* height: 43px; */
   background-color: #353567;
   width: 43px;
 }
@@ -134,17 +119,10 @@ label {
 .search-box {
   font-family: "Open Sans";
   width: 100%;
-  /* height: 4vh; */
   font-size: 18px;
 }
 
 .idea-container {
-  /* display: flex;
-  flex-direction: column-reverse;
-  width: 100%;
-  height: 100vh;
-  margin: 0px;
-  border: 2px solid black; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
@@ -155,5 +133,4 @@ label {
   height: 30vh;
   width: 65%;
   border: 2px solid blue;
-
 }
