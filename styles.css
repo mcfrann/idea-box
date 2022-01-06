@@ -157,7 +157,8 @@ label {
   justify-content: space-between;
 }
 
-.favorite-icon, .delete-icon {
+.favorite-icon,
+.delete-icon {
   height: 100%;
 }
 
