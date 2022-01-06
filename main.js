@@ -6,6 +6,7 @@ var ideaBody = document.querySelector(".main-input-body");
 var ideaContainer = document.querySelector(".idea-container");
 
 
+
 // Global Variable
 
 var ideas = [];
@@ -14,7 +15,8 @@ var ideas = [];
 // Event Listeners here
 
 saveButton.addEventListener('click', loadIdeaGrid);
-ideaTitle.addEventListener('keyup', enableSaveButton)
+ideaTitle.addEventListener('keyup', enableSaveButton);
+ideaContainer.addEventListener('click', deleteIdea);
 
 
 
@@ -55,21 +57,23 @@ function saveIdea() {
 
 function enableSaveButton() {
   saveButton.disabled = false;
-}
+};
 
 function disableSaveButton() {
   saveButton.disabled = true;
-}
+};
 
-// function checkInputs() {
-//     if (ideaTitle.value === "" && ideaBody.value === "") {
-//         saveButton.disabled = false;
-//     } else {
-//         saveButton.disabled = true;
-//     }
-// };
 
 function clearFormInputs() {
     ideaTitle.value = "";
     ideaBody.value = ""
 };
+
+function deleteIdea(ideaId) {
+  for (var i = 0; i < ideas.length; i++) {
+    if (ideas[i].id == event.target.closest(".idea-card-container").id){
+      ideas.splice(i,1)
+  }
+  }
+  createIdeaCard();
+}
