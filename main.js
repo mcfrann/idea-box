@@ -40,7 +40,7 @@ function createIdeaCard () {
         <div class="idea-card-container" id=${ideas[i].id}>
             <div class="idea-header">
             <img class="favorite-icon" src="assets/star.svg" alt="favorite-idea"/>
-            <img class="delete-icon" src="assets/delete.svg" alt="delete-idea"/></div>
+            <img class="delete-icon" id=${ideas[i].id} src="assets/delete.svg" alt="delete-idea"/></div>
             <div class="idea-body">
                 <h4>${ideas[i].title}</h4>
                 <p>${ideas[i].body}</p>
@@ -69,9 +69,9 @@ function clearFormInputs() {
     ideaBody.value = ""
 };
 
-function deleteIdea(ideaId) {
+function deleteIdea() {
   for (var i = 0; i < ideas.length; i++) {
-    if (ideas[i].id == event.target.closest(".idea-card-container").id){
+    if (ideas[i].id == event.target.closest(".delete-icon").id){
       ideas.splice(i,1)
   }
   }
