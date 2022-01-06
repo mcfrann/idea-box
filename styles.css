@@ -101,6 +101,10 @@ label {
   font-weight: bold;
 }
 
+.main-input-save:disabled {
+  opacity: 0.3;
+}
+
 .search-container {
   display: flex;
   width: 30.5%;
@@ -135,6 +139,9 @@ label {
 }
 
 .idea-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 35vh;
   width: 60%;
   font-family: "Open Sans";
@@ -155,7 +162,5 @@ label {
 
 .idea-footer {
   background-color: #5356a5;
-  height: 5vh;; 
+  height: 5vh;;
 }
-
-
