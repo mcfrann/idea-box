@@ -1,5 +1,5 @@
 class Idea {
-  constructor(title,body){
+  constructor(title, body){
     this.title = title;
     this.id = Date.now();
     this.body = body;
