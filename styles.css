@@ -170,3 +170,7 @@ label {
   background-color: #5356a5;
   height: 5vh;;
 }
+
+.hidden {
+  display: none;
+}
