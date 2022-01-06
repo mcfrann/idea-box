@@ -22,11 +22,12 @@ saveButton.addEventListener('click', loadIdeaGrid);
 
 function loadIdeaGrid(e) {
     e.preventDefault();
-    checkInputs();
-    saveIdea();
-    createIdeaCard();  
-}
-
+    if (ideaTitle.value && ideaBody.value) {
+        saveIdea();
+        createIdeaCard();
+        clearFormInputs();
+    }
+};
 
 function createIdeaCard () {
     ideaContainer.innerHTML = "";
@@ -41,22 +42,25 @@ function createIdeaCard () {
             <div class="idea-footer"></div>
         </div>`
     }
-}
+};
 
 function saveIdea() {
     var currentIdea = new Idea(ideaTitle.value, ideaBody.value);
     ideas.push(currentIdea)
 };
 
-function checkInputs() {
-    if (ideaTitle.value && ideaBody.value) {
-        saveButton.disabled = false;
-        console.log("test")
-    }
+// function checkInputs() {
+//     if (ideaTitle.value === "" && ideaBody.value === "") {
+//         saveButton.disabled = false;
+//     } else {
+//         saveButton.disabled = true;
+//     }
+// };
+
+function clearFormInputs() {
+    ideaTitle.value = "";
+    ideaBody.value = ""
 };
-
-
-
 
 
 
