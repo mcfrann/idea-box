@@ -14,6 +14,7 @@ var ideas = [];
 // Event Listeners here
 
 saveButton.addEventListener('click', loadIdeaGrid);
+ideaTitle.addEventListener('keyup', enableSaveButton)
 
 
 
@@ -26,6 +27,7 @@ function loadIdeaGrid(e) {
         saveIdea();
         createIdeaCard();
         clearFormInputs();
+        disableSaveButton()
     }
 };
 
@@ -49,6 +51,14 @@ function saveIdea() {
     ideas.push(currentIdea)
 };
 
+function enableSaveButton() {
+  saveButton.disabled = false;
+}
+
+function disableSaveButton() {
+  saveButton.disabled = true;
+}
+
 // function checkInputs() {
 //     if (ideaTitle.value === "" && ideaBody.value === "") {
 //         saveButton.disabled = false;
@@ -61,9 +71,3 @@ function clearFormInputs() {
     ideaTitle.value = "";
     ideaBody.value = ""
 };
-
-
-
-
-
-
