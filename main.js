@@ -57,7 +57,7 @@ function createIdeaCard () {
 };
 
 function saveIdea() {
-    var currentIdea = new Idea(ideaTitle.value, ideaBody.value);
+     currentIdea = new Idea(ideaTitle.value, ideaBody.value);
     ideas.push(currentIdea)
 };
 
@@ -92,4 +92,10 @@ function toggleIcon(event) {
     favoriteIcon.classList.toggle("hidden");
     favoriteIconActive.classList.toggle("hidden");
   }
+  updateStar()
+}
+
+function updateStar() {
+  currentIdea.updateIdea()
+  console.log(currentIdea)
 }
