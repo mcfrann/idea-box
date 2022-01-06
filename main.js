@@ -36,7 +36,9 @@ function createIdeaCard () {
     for (var i = 0; i < ideas.length; i ++) {
         ideaContainer.innerHTML += `
         <div class="idea-card-container" id=${ideas[i].id}>
-            <div class="idea-header"></div>
+            <div class="idea-header">
+            <img class="favorite-icon" src="assets/star.svg" alt="favorite-idea"/>
+            <img class="delete-icon" src="assets/delete.svg" alt="delete-idea"/></div>
             <div class="idea-body">
                 <h4>${ideas[i].title}</h4>
                 <p>${ideas[i].body}</p>

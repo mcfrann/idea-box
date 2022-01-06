@@ -152,7 +152,13 @@ label {
 
 .idea-header {
   background-color: #1F1F3D;
-  height: 5vh;;
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.favorite-icon, .delete-icon {
+  height: 100%;
 }
 
 .idea-body {
