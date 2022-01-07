@@ -32,13 +32,13 @@ function loadIdeaGrid(e) {
   e.preventDefault();
   if (ideaTitle.value && ideaBody.value) {
       saveIdea();
-      createIdeaCard(ideas);
+      renderIdeaCard();
       clearFormInputs();
       disableSaveButton();
   }
 };
 
-function createIdeaCard() {
+function renderIdeaCard() {
   ideaContainer.innerHTML = "";
   for (var i = 0; i < ideas.length; i ++) {
       ideaContainer.innerHTML += `
@@ -58,7 +58,7 @@ function createIdeaCard() {
 };
 
 function saveIdea() {
-  currentIdea = new Idea(ideaTitle.value, ideaBody.value);
+  var currentIdea = new Idea(ideaTitle.value, ideaBody.value);
   ideas.push(currentIdea);
 };
 
@@ -82,7 +82,7 @@ function deleteIdea() {
       ideas.splice(i, 1);
     }
   }
-  createIdeaCard();
+  renderIdeaCard();
 };
 
 function toggleIcon() {
@@ -90,7 +90,6 @@ function toggleIcon() {
   var favoriteIconActive = document.querySelectorAll(".favorite-icon-active");
   for (var i = 0; i < ideas.length; i++) {
     if (ideas[i].id == event.target.id) {
-      // addToFavorites(ideas[i]);
       favoriteIcon[i].classList.toggle("hidden");
       favoriteIconActive[i].classList.toggle("hidden");
       updateStar(ideas[i]);
@@ -100,12 +99,7 @@ function toggleIcon() {
 
 function updateStar(idea) {
   idea.updateIdea();
-  // toggleIcon();
 };
-
-// function addToFavorites(newFavIdea) {
-//   favoriteIdeas.push(newFavIdea);
-// };
 
 function showFavorites() {
   if (showStarred.innerText === "Show Starred Ideas") {
@@ -113,7 +107,7 @@ function showFavorites() {
     renderFavoriteCards();
   } else {
     showStarred.innerText = "Show Starred Ideas";
-    createIdeaCard();
+    renderIdeaCard();
   }
 };
 
@@ -145,19 +139,3 @@ function showIcon(selectorVariable) {
 function hideIcon(selectorVariable) {
   selectorVariable.classList.add("hidden");
 };
-
-// function checkStar() {
-//   for (var i = 0; i < ideas.length; i ++) {
-//     if (ideas[i].star)
-//   }
-// }
-
-
-// function toggleFavIcon() {
-//   var favoriteIcon = document.querySelectorAll(".favorite-icon");
-//   var favoriteIconActive = document.querySelectorAll(".favorite-icon-active");
-//   for (var i = 0; i < favoriteIdeas.length; i++) {
-//     favoriteIcon[i].classList.add("hidden");
-//     favoriteIconActive[i].classList.remove("hidden");
-//   }
-// };
