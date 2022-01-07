@@ -116,7 +116,16 @@ function showFavorites() {
   }
 }
 
-
+function toggleFavIcon() {
+  var favoriteIcon = document.querySelectorAll(".favorite-icon");
+  var favoriteIconActive = document.querySelectorAll(".favorite-icon-active");
+  for (var i = 0; i < ideas.length; i++) {
+    if (ideas[i].star) {
+      favoriteIcon[i].classList.add("hidden");
+      favoriteIconActive[i].classList.remove("hidden");
+    }
+  }
+}
 
 
   // ideaContainer.innerHTML = "";
