@@ -10,6 +10,7 @@ var showStarred = document.querySelector(".starred-btn");
 // Global Variable
 
 var ideas = [];
+var favoriteIdeas = [];
 var currentIdea;
 
 
@@ -29,25 +30,25 @@ function loadIdeaGrid(e) {
   e.preventDefault();
   if (ideaTitle.value && ideaBody.value) {
       saveIdea();
-      createIdeaCard();
+      createIdeaCard(ideas);
       clearFormInputs();
       disableSaveButton();
   }
 };
 
-function createIdeaCard() {
+function createIdeaCard(ideaArray) {
   ideaContainer.innerHTML = "";
-  for (var i = 0; i < ideas.length; i ++) {
+  for (var i = 0; i < ideaArray.length; i ++) {
       ideaContainer.innerHTML += `
-      <div class="idea-card-container" id=${ideas[i].id}>
+      <div class="idea-card-container" id=${ideaArray[i].id}>
           <div class="idea-header">
-          <img class="favorite-icon" id=${ideas[i].id} src="assets/star.svg" alt="favorite-idea"/>
-          <img class="favorite-icon-active hidden" id=${ideas[i].id} src="assets/star-active.svg" alt="active-favorite-idea"/>
-          <img class="delete-icon" id=${ideas[i].id} src="assets/delete.svg" alt="delete-idea"/>
+          <img class="favorite-icon" id=${ideaArray[i].id} src="assets/star.svg" alt="favorite-idea"/>
+          <img class="favorite-icon-active hidden" id=${ideaArray[i].id} src="assets/star-active.svg" alt="active-favorite-idea"/>
+          <img class="delete-icon" id=${ideaArray[i].id} src="assets/delete.svg" alt="delete-idea"/>
           </div>
           <div class="idea-body">
-              <h4>${ideas[i].title}</h4>
-              <p>${ideas[i].body}</p>
+              <h4>${ideaArray[i].title}</h4>
+              <p>${ideaArray[i].body}</p>
           </div>
           <div class="idea-footer"></div>
       </div>`
@@ -83,54 +84,61 @@ function deleteIdea() {
 };
 
 function toggleIcon() {
-  // var id = event.target;
   var favoriteIcon = document.querySelectorAll(".favorite-icon");
   var favoriteIconActive = document.querySelectorAll(".favorite-icon-active");
   for (var i = 0; i < ideas.length; i++) {
     if (ideas[i].id == event.target.id) {
+      addToFavorites(ideas[i]);
       favoriteIcon[i].classList.toggle("hidden");
       favoriteIconActive[i].classList.toggle("hidden");
     }
   }
+
   updateStar();
 };
-
-// function showActive() {
-//   favoriteIcon.classList.add("hidden");
-//   favoriteIconActive.classList.remove("hidden");
-// }
-//
-// function showInactive() {
-//   favoriteIcon.classList.remove("hidden");
-//   favoriteIconActive.classList.add("hidden");
-// }
-//
-// function laLa() {
-//   if()
-// }
-
-// function toggleIcon() {
-//   var favoriteIcon = document.querySelectorAll(".favorite-icon");
-//   var i = ideas.find(function fruitLoops(element) {
-//     event.target.closest
-//   })
-//   // var favoriteIconActive = document.querySelectorAll(".active");
-//     if(event.target.className === "favorite-icon" || event.target.className === "active") {
-//       favoriteIcon[i].classList.toggle("hidden");
-//       favoriteIconActive.classList.toggle("hidden");
-//       console.log(event.target);
-//     }
-//   updateStar();
-// };
 
 function updateStar() {
   currentIdea.updateIdea();
 };
 
+function addToFavorites(newFavIdea) {
+  favoriteIdeas.push(newFavIdea);
+}
+
 function showFavorites() {
-  for (var i = 0; i < ideas.length; i ++) {
-    if (ideas[i].star) {
-      createIdeaCard();
-    }
+  toggleFavIcon();
+  if (showStarred.innerText === "Show Starred Ideas") {
+    showStarred.innerText = "Show All Ideas";
+    createIdeaCard(favoriteIdeas);
+  } else {
+    showStarred.innerText = "Show Starred Ideas";
+    createIdeaCard(ideas);
   }
 }
+
+
+
+
+  // ideaContainer.innerHTML = "";
+  // for (var i = 0; i < ideas.length; i ++) {
+  //   if (ideas[i].star) {
+  //     ideaContainer.innerHTML += `
+  //     <div class="idea-card-container" id=${ideas[i].id}>
+  //         <div class="idea-header">
+  //         <img class="favorite-icon" id=${ideas[i].id} src="assets/star.svg" alt="favorite-idea"/>
+  //         <img class="favorite-icon-active hidden" id=${ideas[i].id} src="assets/star-active.svg" alt="active-favorite-idea"/>
+  //         <img class="delete-icon" id=${ideas[i].id} src="assets/delete.svg" alt="delete-idea"/>
+  //         </div>
+  //         <div class="idea-body">
+  //             <h4>${ideas[i].title}</h4>
+  //             <p>${ideas[i].body}</p>
+  //         </div>
+  //         <div class="idea-footer"></div>
+  //     </div>`
+    // }
+  // }
+// }
+
+// function createFavoritesView() {
+//
+// }
