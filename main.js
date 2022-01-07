@@ -4,6 +4,7 @@ var saveButton = document.querySelector(".main-input-save");
 var ideaTitle = document.querySelector(".main-input-title");
 var ideaBody = document.querySelector(".main-input-body");
 var ideaContainer = document.querySelector(".idea-container");
+var showStarred = document.querySelector(".starred-btn");
 
 
 // Global Variable
@@ -18,6 +19,7 @@ saveButton.addEventListener('click', loadIdeaGrid);
 ideaTitle.addEventListener('keyup', enableSaveButton);
 ideaContainer.addEventListener('click', deleteIdea);
 ideaContainer.addEventListener('click', toggleIcon);
+showStarred.addEventListener('click', showFavorites);
 
 
 // Event handlers here
@@ -33,7 +35,7 @@ function loadIdeaGrid(e) {
   }
 };
 
-function createIdeaCard () {
+function createIdeaCard() {
   ideaContainer.innerHTML = "";
   for (var i = 0; i < ideas.length; i ++) {
       ideaContainer.innerHTML += `
@@ -74,22 +76,61 @@ function clearFormInputs() {
 function deleteIdea() {
   for (var i = 0; i < ideas.length; i++) {
     if (ideas[i].id == event.target.closest(".delete-icon").id) {
-      ideas.splice(i,1);
+      ideas.splice(i, 1);
     }
   }
   createIdeaCard();
 };
 
 function toggleIcon() {
-  var favoriteIcon = document.querySelector(".favorite-icon");
-  var favoriteIconActive = document.querySelector(".favorite-icon-active");
-  if(event.target.className === "favorite-icon" || event.target.className === "favorite-icon-active") {
-    favoriteIcon.classList.toggle("hidden");
-    favoriteIconActive.classList.toggle("hidden");
+  // var id = event.target;
+  var favoriteIcon = document.querySelectorAll(".favorite-icon");
+  var favoriteIconActive = document.querySelectorAll(".favorite-icon-active");
+  for (var i = 0; i < ideas.length; i++) {
+    if (ideas[i].id == event.target.id) {
+      favoriteIcon[i].classList.toggle("hidden");
+      favoriteIconActive[i].classList.toggle("hidden");
+    }
   }
   updateStar();
 };
 
+// function showActive() {
+//   favoriteIcon.classList.add("hidden");
+//   favoriteIconActive.classList.remove("hidden");
+// }
+//
+// function showInactive() {
+//   favoriteIcon.classList.remove("hidden");
+//   favoriteIconActive.classList.add("hidden");
+// }
+//
+// function laLa() {
+//   if()
+// }
+
+// function toggleIcon() {
+//   var favoriteIcon = document.querySelectorAll(".favorite-icon");
+//   var i = ideas.find(function fruitLoops(element) {
+//     event.target.closest
+//   })
+//   // var favoriteIconActive = document.querySelectorAll(".active");
+//     if(event.target.className === "favorite-icon" || event.target.className === "active") {
+//       favoriteIcon[i].classList.toggle("hidden");
+//       favoriteIconActive.classList.toggle("hidden");
+//       console.log(event.target);
+//     }
+//   updateStar();
+// };
+
 function updateStar() {
   currentIdea.updateIdea();
 };
+
+function showFavorites() {
+  for (var i = 0; i < ideas.length; i ++) {
+    if (ideas[i].star) {
+      createIdeaCard();
+    }
+  }
+}
