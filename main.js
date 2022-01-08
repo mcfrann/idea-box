@@ -55,6 +55,7 @@ function renderIdeaCard() {
         <div class="idea-footer"></div>
     </div>`
   }
+  // showAllCards();
 };
 
 function saveIdea() {
@@ -107,7 +108,7 @@ function showFavorites() {
     renderFavoriteCards();
   } else {
     showStarred.innerText = "Show Starred Ideas";
-    renderIdeaCard();
+    showAllCards();
   }
 };
 
@@ -132,10 +133,25 @@ function renderFavoriteCards() {
   }
 };
 
+function showAllCards() {
+  renderIdeaCard();
+  var favoriteIcon = document.querySelector(".favorite-icon");
+  var favoriteIconActive = document.querySelector(".favorite-icon-active");
+  for (var i = 0; i < ideas.length; i++) {
+    if (ideas[i].star) {
+      showIcon(favoriteIconActive);
+      hideIcon(favoriteIcon);
+    } else {
+      showIcon(favoriteIcon);
+      hideIcon(favoriteIconActive);
+    }
+  }
+};
+
 function showIcon(selectorVariable) {
-  selectorVariable.classList.remove("hidden");
+  selectorVariable.classList.toggle("hidden");
 };
 
 function hideIcon(selectorVariable) {
-  selectorVariable.classList.add("hidden");
+  selectorVariable.classList.toggle("hidden");
 };
