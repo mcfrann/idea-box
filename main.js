@@ -5,6 +5,7 @@ var ideaTitle = document.querySelector(".main-input-title");
 var ideaBody = document.querySelector(".main-input-body");
 var ideaContainer = document.querySelector(".idea-container");
 var showStarred = document.querySelector(".starred-btn");
+var searchBar = document.querySelector(".search-box");
 
 
 // Global Variable
@@ -18,6 +19,7 @@ saveButton.addEventListener('click', loadIdeaGrid);
 ideaTitle.addEventListener('keyup', enableSaveButton);
 ideaContainer.addEventListener('click', handleDeleteOrFavorite);
 showStarred.addEventListener('click', showFavorites);
+searchBar.addEventListener('keyup', filterIdeas);
 
 
 // Event handlers here
@@ -123,3 +125,12 @@ function renderFavoriteCards() {
   }
 renderIdeaCard(favIdeas);
 };
+
+function filterIdeas(e) {
+  console.log(e.target.value)
+  var searchString = e.target.value
+}
+
+// Find a way to read the input value
+//update ideas page in real time as characters are typed
+//
