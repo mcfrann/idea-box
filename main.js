@@ -48,7 +48,9 @@ function renderIdeaCard(ideas) {
             <h4>${ideas[i].title}</h4>
             <p>${ideas[i].body}</p>
         </div>
-        <div class="idea-footer"></div>
+        <div class="idea-footer">
+        <img class="add-comments" src="assets/comment.svg" alt="comment-icon"/>
+        </div>
     </div>`
   }
 };
