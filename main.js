@@ -7,8 +7,6 @@ var ideaContainer = document.querySelector(".idea-container");
 var showStarred = document.querySelector(".starred-btn");
 
 
-
-
 // Global Variable
 
 var ideas = [];
@@ -29,20 +27,20 @@ function loadIdeaGrid(e) {
   e.preventDefault();
   if (ideaTitle.value && ideaBody.value) {
       saveIdea();
-      renderIdeaCard();
+      renderIdeaCard(ideas);
       clearFormInputs();
       disableSaveButton();
   }
 };
 
-function renderIdeaCard() {
+function renderIdeaCard(ideas) {
   ideaContainer.innerHTML = "";
   for (var i = 0; i < ideas.length; i ++) {
       ideaContainer.innerHTML += `
     <div class="idea-card-container" id=${ideas[i].id}>
         <div class="idea-header">
-        <img class="favorite-icon" id=${ideas[i].id} src="${handleStar(ideas[i])}" alt="favorite-idea"/>
-        <img class="delete-icon" id=${ideas[i].id} src="assets/delete.svg" alt="delete-idea"/>
+        <img class="favorite-icon" src="${handleStar(ideas[i])}" alt="favorite-idea"/>
+        <img class="delete-icon" src="assets/delete.svg" alt="delete-idea"/>
         </div>
         <div class="idea-body">
             <h4>${ideas[i].title}</h4>
@@ -51,7 +49,6 @@ function renderIdeaCard() {
         <div class="idea-footer"></div>
     </div>`
   }
-  // showAllCards();
 };
 
 function handleStar(idea) {
@@ -87,7 +84,7 @@ function deleteIdea(event) {
       ideas.splice(i, 1);
     }
   }
-  renderIdeaCard();
+  renderIdeaCard(ideas);
 };
 
 function handleDeleteOrFavorite(e) {
@@ -104,7 +101,7 @@ function addToFavorite(event) {
       ideas[i].updateIdea();
     }
   }
-  renderIdeaCard();
+  renderIdeaCard(ideas);
 };
 
 function showFavorites() {
@@ -113,50 +110,16 @@ function showFavorites() {
     renderFavoriteCards();
   } else {
     showStarred.innerText = "Show Starred Ideas";
-    showAllCards();
+    renderIdeaCard(ideas);
   }
 };
 
 function renderFavoriteCards() {
-  ideaContainer.innerHTML = "";
+  var favIdeas = [];
   for (var i = 0; i < ideas.length; i ++) {
     if (ideas[i].star) {
-      ideaContainer.innerHTML += `
-      <div class="idea-card-container" id=${ideas[i].id}>
-          <div class="idea-header">
-          <img class="favorite-icon hidden" id=${ideas[i].id} src="assets/star.svg" alt="favorite-idea"/>
-          <img class="favorite-icon-active" id=${ideas[i].id} src="assets/star-active.svg" alt="active-favorite-idea"/>
-          <img class="delete-icon" id=${ideas[i].id} src="assets/delete.svg" alt="delete-idea"/>
-          </div>
-          <div class="idea-body">
-              <h4>${ideas[i].title}</h4>
-              <p>${ideas[i].body}</p>
-          </div>
-          <div class="idea-footer"></div>
-      </div>`
+      favIdeas.push(ideas[i]);
     }
   }
-};
-
-function showAllCards() {
-  renderIdeaCard();
-  var favoriteIcon = document.querySelector(".favorite-icon");
-  var favoriteIconActive = document.querySelector(".favorite-icon-active");
-  for (var i = 0; i < ideas.length; i++) {
-    if (ideas[i].star) {
-      showIcon(favoriteIconActive);
-      hideIcon(favoriteIcon);
-    } else {
-      showIcon(favoriteIcon);
-      hideIcon(favoriteIconActive);
-    }
-  }
-};
-
-function showIcon(selectorVariable) {
-  selectorVariable.classList.toggle("hidden");
-};
-
-function hideIcon(selectorVariable) {
-  selectorVariable.classList.toggle("hidden");
+renderIdeaCard(favIdeas);
 };
