@@ -65,6 +65,11 @@ label {
   color: #1F1F3D;
 }
 
+.title-label,
+.body-label {
+  margin-right: 28%;
+}
+
 .main-page-form {
   display: flex;
   flex-direction: column;
