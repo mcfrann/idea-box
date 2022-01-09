@@ -50,6 +50,7 @@ function renderIdeaCard(ideas) {
         </div>
         <div class="idea-footer">
         <img class="add-comments" src="assets/comment.svg" alt="comment-icon"/>
+        <p class="comment-text">Comment</p>
         </div>
     </div>`
   }
