@@ -4,61 +4,64 @@ var saveButton = document.querySelector(".main-input-save");
 var ideaTitle = document.querySelector(".main-input-title");
 var ideaBody = document.querySelector(".main-input-body");
 var ideaContainer = document.querySelector(".idea-container");
-// var favoriteIcon = document.querySelector(".favorite-icon");
-// var favoriteIconActive = document.querySelector(".favorite-icon-active")
-
+var showStarred = document.querySelector(".starred-btn");
 
 
 // Global Variable
 
 var ideas = [];
-var currentIdea =
 
 
 // Event Listeners here
 
 saveButton.addEventListener('click', loadIdeaGrid);
 ideaTitle.addEventListener('keyup', enableSaveButton);
-ideaContainer.addEventListener('click', deleteIdea);
-ideaContainer.addEventListener('click', toggleIcon);
-
-
+ideaContainer.addEventListener('click', handleDeleteOrFavorite);
+showStarred.addEventListener('click', showFavorites);
 
 
 // Event handlers here
 
 
 function loadIdeaGrid(e) {
-    e.preventDefault();
-    if (ideaTitle.value && ideaBody.value) {
-        saveIdea();
-        createIdeaCard();
-        clearFormInputs();
-        disableSaveButton()
-    }
+  e.preventDefault();
+  if (ideaTitle.value && ideaBody.value) {
+      saveIdea();
+      renderIdeaCard(ideas);
+      clearFormInputs();
+      disableSaveButton();
+  }
 };
 
-function createIdeaCard () {
-    ideaContainer.innerHTML = "";
-    for (var i = 0; i < ideas.length; i ++) {
-        ideaContainer.innerHTML += `
-        <div class="idea-card-container" id=${ideas[i].id}>
-            <div class="idea-header">
-            <img class="favorite-icon" id=${ideas[i].id} src="assets/star.svg" alt="favorite-idea"/>
-            <img class="favorite-icon-active hidden" id=${ideas[i].id} src="assets/star-active.svg" alt="active-favorite-idea"/>
-            <img class="delete-icon" id=${ideas[i].id} src="assets/delete.svg" alt="delete-idea"/></div>
-            <div class="idea-body">
-                <h4>${ideas[i].title}</h4>
-                <p>${ideas[i].body}</p>
-            </div>
-            <div class="idea-footer"></div>
-        </div>`
-    }
+function renderIdeaCard(ideas) {
+  ideaContainer.innerHTML = "";
+  for (var i = 0; i < ideas.length; i ++) {
+      ideaContainer.innerHTML += `
+    <div class="idea-card-container" id=${ideas[i].id}>
+        <div class="idea-header">
+        <img class="favorite-icon" src="${handleStar(ideas[i])}" alt="favorite-idea"/>
+        <img class="delete-icon" src="assets/delete.svg" alt="delete-idea"/>
+        </div>
+        <div class="idea-body">
+            <h4>${ideas[i].title}</h4>
+            <p>${ideas[i].body}</p>
+        </div>
+        <div class="idea-footer"></div>
+    </div>`
+  }
+};
+
+function handleStar(idea) {
+  if (idea.star) {
+    return "assets/star-active.svg";
+  } else {
+    return "assets/star.svg";
+  }
 };
 
 function saveIdea() {
-     currentIdea = new Idea(ideaTitle.value, ideaBody.value);
-    ideas.push(currentIdea)
+  var currentIdea = new Idea(ideaTitle.value, ideaBody.value);
+  ideas.push(currentIdea);
 };
 
 function enableSaveButton() {
@@ -71,31 +74,52 @@ function disableSaveButton() {
 
 
 function clearFormInputs() {
-    ideaTitle.value = "";
-    ideaBody.value = ""
+  ideaTitle.value = "";
+  ideaBody.value = "";
 };
 
-function deleteIdea() {
+function deleteIdea(event) {
   for (var i = 0; i < ideas.length; i++) {
-    if (ideas[i].id == event.target.closest(".delete-icon").id){
-      ideas.splice(i,1)
+    if (ideas[i].id == event.target.closest(".idea-card-container").id) {
+      ideas.splice(i, 1);
+    }
   }
+  renderIdeaCard(ideas);
+};
+
+function handleDeleteOrFavorite(e) {
+  if (e.target.classList.value === "delete-icon") {
+    deleteIdea(e);
+  } else if (e.target.classList.value === "favorite-icon") {
+    addToFavorite(e);
   }
-  createIdeaCard();
-}
+};
 
-function toggleIcon(event) {
-  var favoriteIcon = document.querySelector(".favorite-icon");
-  var favoriteIconActive = document.querySelector(".favorite-icon-active");
-
-  if(event.target.className === "favorite-icon" || event.target.className === "favorite-icon-active" ) {
-    favoriteIcon.classList.toggle("hidden");
-    favoriteIconActive.classList.toggle("hidden");
+function addToFavorite(event) {
+  for (var i = 0; i < ideas.length; i++) {
+    if (ideas[i].id == event.target.closest(".idea-card-container").id) {
+      ideas[i].updateIdea();
+    }
   }
-  updateStar()
-}
+  renderIdeaCard(ideas);
+};
 
-function updateStar() {
-  currentIdea.updateIdea()
-  console.log(currentIdea)
-}
+function showFavorites() {
+  if (showStarred.innerText === "Show Starred Ideas") {
+    showStarred.innerText = "Show All Ideas";
+    renderFavoriteCards();
+  } else {
+    showStarred.innerText = "Show Starred Ideas";
+    renderIdeaCard(ideas);
+  }
+};
+
+function renderFavoriteCards() {
+  var favIdeas = [];
+  for (var i = 0; i < ideas.length; i ++) {
+    if (ideas[i].star) {
+      favIdeas.push(ideas[i]);
+    }
+  }
+renderIdeaCard(favIdeas);
+};
