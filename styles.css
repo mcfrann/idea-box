@@ -134,8 +134,9 @@ label {
   overflow: scroll;
   grid-gap: 20px;
   padding: 20px;
-  height: 48%;
+  height: 63%;
   background-color: #EAEAF4;
+  width: 100%;
 }
 
 .idea-card-container {
@@ -168,9 +169,18 @@ label {
 }
 
 .idea-footer {
+  display: flex;
+  align-items: center;
   background-color: #5356a5;
   height: 5vh;
+  color: white;
+  font-weight: bold;
 }
+
 .add-comments {
   height: 100%;
+}
+
+.comment-text {
+  margin: 0;
 }
