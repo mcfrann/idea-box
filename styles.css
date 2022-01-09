@@ -169,9 +169,8 @@ label {
 
 .idea-footer {
   background-color: #5356a5;
-  height: 5vh;;
+  height: 5vh;
 }
-
-.hidden {
-  display: none;
+.add-comments {
+  height: 100%;
 }
