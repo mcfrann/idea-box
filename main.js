@@ -123,14 +123,16 @@ function renderFavoriteCards() {
       favIdeas.push(ideas[i]);
     }
   }
-renderIdeaCard(favIdeas);
+  renderIdeaCard(favIdeas);
 };
 
 function filterIdeas(e) {
-  console.log(e.target.value)
   var searchString = e.target.value
   var filteredIdeas = ideas.filter(function(idea) {
-    return idea.title.includes(searchString);
-  })
-    renderIdeaCard(filteredIdeas);
-}
+      return (
+        idea.title.includes(searchString) ||
+        idea.body.includes(searchString)
+      );
+    });
+  renderIdeaCard(filteredIdeas);
+};
