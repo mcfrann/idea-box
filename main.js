@@ -1,23 +1,28 @@
 // Selector Variables here
 
+
 var saveButton = document.querySelector(".main-input-save");
 var ideaTitle = document.querySelector(".main-input-title");
 var ideaBody = document.querySelector(".main-input-body");
 var ideaContainer = document.querySelector(".idea-container");
 var showStarred = document.querySelector(".starred-btn");
+var searchBar = document.querySelector(".search-box");
 
 
 // Global Variable
+
 
 var ideas = [];
 
 
 // Event Listeners here
 
+
 saveButton.addEventListener('click', loadIdeaGrid);
 ideaTitle.addEventListener('keyup', enableSaveButton);
 ideaContainer.addEventListener('click', handleDeleteOrFavorite);
 showStarred.addEventListener('click', showFavorites);
+searchBar.addEventListener('keyup', filterIdeas);
 
 
 // Event handlers here
@@ -39,14 +44,17 @@ function renderIdeaCard(ideas) {
       ideaContainer.innerHTML += `
     <div class="idea-card-container" id=${ideas[i].id}>
         <div class="idea-header">
-        <img class="favorite-icon" src="${handleStar(ideas[i])}" alt="favorite-idea"/>
-        <img class="delete-icon" src="assets/delete.svg" alt="delete-idea"/>
+          <img class="favorite-icon" src="${handleStar(ideas[i])}" alt="favorite-idea"/>
+          <img class="delete-icon" src="assets/delete.svg" alt="delete-idea"/>
         </div>
         <div class="idea-body">
             <h4>${ideas[i].title}</h4>
             <p>${ideas[i].body}</p>
         </div>
-        <div class="idea-footer"></div>
+        <div class="idea-footer">
+          <img class="add-comments" src="assets/comment.svg" alt="comment-icon"/>
+          <p class="comment-text">Comment</p>
+        </div>
     </div>`
   }
 };
@@ -71,7 +79,6 @@ function enableSaveButton() {
 function disableSaveButton() {
   saveButton.disabled = true;
 };
-
 
 function clearFormInputs() {
   ideaTitle.value = "";
@@ -121,5 +128,16 @@ function renderFavoriteCards() {
       favIdeas.push(ideas[i]);
     }
   }
-renderIdeaCard(favIdeas);
+  renderIdeaCard(favIdeas);
+};
+
+function filterIdeas(e) {
+  var searchString = e.target.value
+  var filteredIdeas = ideas.filter(function(idea) {
+      return (
+        idea.title.includes(searchString) ||
+        idea.body.includes(searchString)
+      );
+    });
+  renderIdeaCard(filteredIdeas);
 };
