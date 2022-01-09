@@ -129,8 +129,8 @@ renderIdeaCard(favIdeas);
 function filterIdeas(e) {
   console.log(e.target.value)
   var searchString = e.target.value
+  var filteredIdeas = ideas.filter(function(idea) {
+    return idea.title.includes(searchString);
+  })
+    renderIdeaCard(filteredIdeas);
 }
-
-// Find a way to read the input value
-//update ideas page in real time as characters are typed
-//
