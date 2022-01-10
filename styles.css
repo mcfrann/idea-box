@@ -1,8 +1,10 @@
+/* UNIVERSAL RULES */
+
 body {
-    display: flex;
-    height: 100vh;
-    margin: 0px;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  margin: 0px;
 }
 
 /* NAV RULES */
@@ -15,38 +17,38 @@ nav {
 }
 
 .main-header {
-    color: white;
-    font-family: "Open Sans";
-    font-weight: 600;
-    font-size: 20px;
-    padding: 20px;
+  color: white;
+  font-family: "Open Sans";
+  font-weight: 600;
+  font-size: 20px;
+  padding: 20px;
 }
 
 .filter-ideas-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 20%;
-    padding: 15px;
-    border-top: solid 2px #353567;
-    border-bottom: solid 2px #353567;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 20%;
+  padding: 15px;
+  border-top: solid 2px #353567;
+  border-bottom: solid 2px #353567;
 }
 
 .starred-btn {
-    height: 38%;
-    font-family: "Open Sans";
-    font-size: 20px;
-    font-weight: 600;
-    color: white;
-    background-color: #5356A4;
-    border: none;
+  height: 38%;
+  font-family: "Open Sans";
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  background-color: #5356A4;
+  border: none;
 }
 
 .filter-ideas {
-    color: #BFBFDD;
-    font-family: "Open Sans";
-    margin-left: 2px;
-    margin-bottom: 20px;
+  color: #BFBFDD;
+  font-family: "Open Sans";
+  margin-left: 2px;
+  margin-bottom: 20px;
 }
 
 /* FORM RULES */
@@ -63,10 +65,6 @@ label {
   font-family: "Open Sans";
   font-weight: bold;
   color: #1F1F3D;
-}
-
-.title-label,
-.body-label {
   margin-right: 28%;
 }
 
@@ -80,7 +78,6 @@ label {
 .main-input-title {
   width: 30%;
   height: 4vh;
-  justify-content: space-around;
   border: 2px solid #5356A4;
   border-radius: 3px;
 }
@@ -88,7 +85,6 @@ label {
 .main-input-body {
   width: 30%;
   height: 10vh;
-  justify-content: space-around;
   border: 2px solid #5356A4;
   border-radius: 3px;
 }
@@ -157,10 +153,10 @@ label {
 }
 
 .idea-header {
-  background-color: #1F1F3D;
-  height: 5vh;
   display: flex;
   justify-content: space-between;
+  background-color: #1F1F3D;
+  height: 5vh;
 }
 
 .favorite-icon,
