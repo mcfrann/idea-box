@@ -35,13 +35,13 @@ function loadIdeaGrid(e) {
       renderIdeaCard(ideas);
       clearFormInputs();
       disableSaveButton();
-  }
+  };
 };
 
 function renderIdeaCard(ideas) {
   ideaContainer.innerHTML = "";
   for (var i = 0; i < ideas.length; i ++) {
-      ideaContainer.innerHTML += `
+    ideaContainer.innerHTML += `
     <div class="idea-card-container" id=${ideas[i].id}>
         <div class="idea-header">
           <img class="favorite-icon" src="${handleStar(ideas[i])}" alt="favorite-idea"/>
@@ -56,7 +56,7 @@ function renderIdeaCard(ideas) {
           <p class="comment-text">Comment</p>
         </div>
     </div>`
-  }
+  };
 };
 
 function handleStar(idea) {
@@ -64,7 +64,7 @@ function handleStar(idea) {
     return "assets/star-active.svg";
   } else {
     return "assets/star.svg";
-  }
+  };
 };
 
 function saveIdea() {
@@ -85,12 +85,12 @@ function clearFormInputs() {
   ideaBody.value = "";
 };
 
-function deleteIdea(event) {
+function deleteIdea(e) {
   for (var i = 0; i < ideas.length; i++) {
-    if (ideas[i].id == event.target.closest(".idea-card-container").id) {
+    if (ideas[i].id == e.target.closest(".idea-card-container").id) {
       ideas.splice(i, 1);
-    }
-  }
+    };
+  };
   renderIdeaCard(ideas);
 };
 
@@ -99,15 +99,15 @@ function handleDeleteOrFavorite(e) {
     deleteIdea(e);
   } else if (e.target.classList.value === "favorite-icon") {
     addToFavorite(e);
-  }
+  };
 };
 
-function addToFavorite(event) {
+function addToFavorite(e) {
   for (var i = 0; i < ideas.length; i++) {
-    if (ideas[i].id == event.target.closest(".idea-card-container").id) {
+    if (ideas[i].id == e.target.closest(".idea-card-container").id) {
       ideas[i].updateIdea();
-    }
-  }
+    };
+  };
   renderIdeaCard(ideas);
 };
 
@@ -118,7 +118,7 @@ function showFavorites() {
   } else {
     showStarred.innerText = "Show Starred Ideas";
     renderIdeaCard(ideas);
-  }
+  };
 };
 
 function renderFavoriteCards() {
@@ -126,8 +126,8 @@ function renderFavoriteCards() {
   for (var i = 0; i < ideas.length; i ++) {
     if (ideas[i].star) {
       favIdeas.push(ideas[i]);
-    }
-  }
+    };
+  };
   renderIdeaCard(favIdeas);
 };
 
