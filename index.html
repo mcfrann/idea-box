@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-        <link rel="stylesheet" href="styles.css">
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">    </head>
+      <link rel="stylesheet" href="styles.css">
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">    
+    </head>
     <body>
         <nav>
-            <header class="main-header">IdeaBox</header>
-            <div class="filter-ideas-container">
-                <label class="filter-ideas">Filter Starred Ideas</label>
-                <button name="show-starred-btn" class="starred-btn" id="starred-btn">Show Starred Ideas</button>
-            </div>
+          <header class="main-header">IdeaBox</header>
+          <div class="filter-ideas-container">
+            <label class="filter-ideas">Filter Starred Ideas</label>
+            <button name="show-starred-btn" class="starred-btn" id="starred-btn">Show Starred Ideas</button>
+          </div>
         </nav>
         <main>
           <section class="form-container">
             <form class="main-page-form">
-                <label for="input-title" class="title-label form-element">Title</label>
-                <input type="text" class="main-input-title form-element"/>
-                <label for="input-body" class="body-label form-element">Body</label>
-                <input type="text" class="main-input-body form-element"/>
-                <button class="main-input-save form-element button" type="button" disabled>Save</button>
-                <span class="search-container">
-                  <img class="search-icon" src="assets/search.svg" alt="search ideas"/>
-                  <input type="text" class="search-box form-element" placeholder="Search Ideas"/>
-                </span>
+              <label for="input-title" class="title-label form-element">Title</label>
+              <input type="text" class="main-input-title form-element" maxlength="20"/>
+              <label for="input-body" class="body-label form-element">Body</label>
+              <input type="text" class="main-input-body form-element" maxlength="100"/>
+              <button class="main-input-save form-element button" type="button" disabled>Save</button>
+              <span class="search-container">
+                <img class="search-icon" src="assets/search.svg" alt="search ideas"/>
+                <input type="text" class="search-box form-element" placeholder="Search Ideas"/>
+              </span>
             </form>
           </section>
-            <section class="idea-container">
-            </section>
+          <section class="idea-container">
+          </section>
         </main>
         <script src="main.js"></script>
         <script src="Idea.js"></script>
